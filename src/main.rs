@@ -9,8 +9,8 @@ async fn main() {
             //exit_on_close_request: false, // 自行控制退出
             //decorations: false, // 设置无边框 无标题栏
             size: iced::Size {
-                width: 1920f32,
-                height: 1080f32,
+                width: 800f32,
+                height: 600f32,
             },
             ..Default::default()
         },
