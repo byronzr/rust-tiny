@@ -17,7 +17,7 @@
 │   │   └── home.rs
 │   └── pages.rs                                # mod pages
 └── tests                                       # 单元测试集合目录
-└── tiny_macro                                  # 输助项目的导出宏
+└── tiny_macro                                  # 辅助项目的导出宏
     ├── Cargo.toml
     └── src
         └── lib.rs
