@@ -53,13 +53,7 @@ pub enum Page {
 
 // ------ impl Page ------
 impl Page {
-    pub const MENU_VEC: &'static [(&'static str, Page)] = &[
-        ("Home", Page::Home(home::SubMessage::None)),
-        ("About", Page::About(about::SubMessage::None)),
-        ("Contact", Page::Contact(contact::SubMessage::None)),
-    ];
-
-    // 集中一个地方，定义所有页面
+    // 集中一个地方，定义所有页面,用常量数组取代
     // pub fn to_vec() -> Vec<(Page, &'static str)> {
     //     vec![
     //         (Page::Home(home::SubMessage::None), "Home"),
@@ -67,19 +61,25 @@ impl Page {
     //         (Page::Contact(contact::SubMessage::None), "Contact"),
     //     ]
     // }
+    // 顶部菜单与页面实例的映射,以常量的方式初始化
+    pub const MENU_VEC: &'static [(&'static str, Page)] = &[
+        ("Home", Page::Home(home::SubMessage::None)),
+        ("About", Page::About(about::SubMessage::None)),
+        ("Contact", Page::Contact(contact::SubMessage::None)),
+    ];
 
-    // // page 的 update 方法
+    // page 的 update 方法
+    // 已经由过程宏实现,安置在 tiny_macro/src/lib.rs
     // pub fn update(&self, idx: &mut usize, state: &mut State) -> iced::Command<Message> {
     //     //page_update!(self, idx, state, Page::Home, Page::About, Page::Contact)
     //     self.variants(idx, state)
     // }
-    // 已经由过程宏实现,安置在 tiny_macro/src/lib.rs
 
     // 在大布局中的子视图
+    // 已经由过程宏实现,安置在 tiny_macro/src/lib.rs
     // pub fn subview(&self, state: &State) -> iced::Element<Message> {
     //     page_subview!(self, state, Page::Home, Page::About, Page::Contact)
     // }
-    // 已经由过程宏实现,安置在 tiny_macro/src/lib.rs
 
     // 承担 layout 的 view 方法
     pub fn view(&self, state: &State) -> iced::Element<Message> {
