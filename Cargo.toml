@@ -1,0 +1,19 @@
+[package]
+name = "tiny"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+iced = { version = "0.12.1", features = ["image", "advanced", "tokio"] }
+tokio = { version = "1.39.2", features = ["full"] }
+log = "0.4.22"
+
+tiny_macro = { path = "./tiny_macro" }
+
+
+[build-dependencies]
+chrono = "0.4.38"
+
+[profile.release]
+lto = true
+opt-level = "z"
