@@ -16,6 +16,8 @@ pub fn tiny_page_update_derive(input: TokenStream) -> TokenStream {
         panic!("TinyPageMacro only works with enums");
     };
 
+    // 通过 collect 方法，将所有的变体名称收集到一个 Vec 中
+    // 在 quote! 就可以重复使用，Iterator 也可以直接使用,但会在第二次使用时耗尽
     let variant_names = variants.iter().map(|v| &v.ident).collect::<Vec<_>>();
 
     let expanded = quote! {
