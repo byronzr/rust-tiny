@@ -9,7 +9,7 @@ pub mod home;
 
 pub trait PageAction<T> {
     fn update(&self, idx: &mut usize, state: &mut State) -> iced::Command<T>;
-    fn view(&self, state: &State) -> iced::Element<T>;
+    fn view<'a>(&self, state: &'a State) -> iced::Element<'a, T>;
 }
 
 // update 宏，用于简化 update 方法的实现
@@ -82,7 +82,7 @@ impl Page {
     // }
 
     // 承担 layout 的 view 方法
-    pub fn view(&self, state: &State) -> iced::Element<Message> {
+    pub fn view<'a>(&self, state: &'a State) -> iced::Element<'a, Message> {
         // 顶部菜单
         let menu = Page::MENU_VEC.iter().enumerate().fold(
             row![].spacing(5),

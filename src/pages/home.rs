@@ -9,7 +9,7 @@ impl super::PageAction<SubMessage> for SubMessage {
         Command::none()
     }
 
-    fn view(&self, _state: &super::State) -> iced::Element<SubMessage> {
+    fn view<'a>(&self, _state: &'a super::State) -> iced::Element<'a, SubMessage> {
         iced::widget::Text::new("Home").into()
     }
 }

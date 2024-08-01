@@ -32,7 +32,7 @@ pub fn tiny_page_update_derive(input: TokenStream) -> TokenStream {
                 .map(Message::Action)
             }
             // subview 方法
-            pub fn subview(&self,state: &State) -> iced::Element<Message> {
+            pub fn subview<'a>(&self,state: &'a State) -> iced::Element<'a,Message> {
                 match self {
                     #(
                         #name::#variant_names(sub_message)=>sub_message.view(state).map(#name::#variant_names),
