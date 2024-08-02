@@ -123,7 +123,7 @@ impl Application for TinyApp {
             TinyApp::Loading => iced::Element::new(iced::widget::Text::new("Loading...")),
             TinyApp::Loaded { idx, state, pages } => {
                 // 因为 message 无法从 view 中传递，所以这里使用 idx 与 pages 来获取指定页面
-                pages[*idx].view(state).into()
+                pages[*idx].view(state, *idx).into()
             }
         }
     }

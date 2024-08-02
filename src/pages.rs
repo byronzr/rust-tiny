@@ -82,14 +82,20 @@ impl Page {
     // }
 
     // 承担 layout 的 view 方法
-    pub fn view<'a>(&self, state: &'a State) -> iced::Element<'a, Message> {
+    pub fn view<'a>(&self, state: &'a State, ndx: usize) -> iced::Element<'a, Message> {
         // 顶部菜单
         let menu = Page::MENU_VEC.iter().enumerate().fold(
             row![].spacing(5),
             |acc, (idx, (title, _page))| {
                 let button = iced::widget::Button::new(iced::widget::Text::new(title.to_string()))
-                    .padding([5, 15])
-                    .on_press(Message::Navigate(idx));
+                    .padding([5, 15]);
+
+                let button = if idx == ndx {
+                    button
+                } else {
+                    button.on_press(Message::Navigate(idx))
+                };
+
                 acc.push(button)
             },
         );
