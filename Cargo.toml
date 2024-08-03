@@ -4,12 +4,16 @@ version = "0.1.0"
 edition = "2021"
 
 [dependencies]
-iced = { version = "0.12.1", features = ["image", "advanced", "tokio"] }
-tokio = { version = "1.39.2", features = ["full"] }
+iced = { version = "0.12.1", features = ["image", "tokio"] }
 log = "0.4.22"
-
 tiny_macro = { path = "./tiny_macro" }
 
+
+[target.'cfg(target_arch = "wasm32")'.dependencies]
+iced_web = "0.4.0"
+iced = { version = "0.12.1", features = ["image", "debug", "webgl", "tokio"] }
+console_error_panic_hook = "0.1.7"
+console_log = "1.0.0"
 
 [build-dependencies]
 chrono = "0.4.38"
